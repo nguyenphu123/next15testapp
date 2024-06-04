@@ -1,0 +1,20 @@
+version: "2"
+services:
+  playthis_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1000m"
+        max-file: "10"
+    ports:
+      # - "80:3000"
+      - "3003:3003"
+    restart: "always"
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge

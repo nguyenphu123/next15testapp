@@ -1,5 +1,5 @@
 FROM node:latest
-MAINTAINER Daniel Ram
+MAINTAINER phu
 ADD . /var/www
 WORKDIR /var/www
 

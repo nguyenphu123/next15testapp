@@ -15,9 +15,9 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                powershell 'npm install' 
-                // powershell 'docker build . -f dockerfile.txt'
-                // powershell 'docker push phunguyen1211/test:v2'
+                checkout scm
+                powershell 'docker build . -f dockerfile.txt'
+                powershell 'docker push phunguyen1211/test:v2'
             }
         }
     }

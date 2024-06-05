@@ -10,7 +10,7 @@ pipeline {
         stage('Test') { 
             steps {
                 powershell 'npm install' 
-                powershell 'npm run dev'
+                
             }
         }
         stage('Deploy') { 

@@ -9,7 +9,7 @@ pipeline {
         stage('Build image') {
             steps{
                 script{
-                     app = docker.build("-f dockerfile")
+                     app = docker.build("dockerfile")
                 }
             }
         /* This builds the actual image; synonymous to

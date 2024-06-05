@@ -3,21 +3,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                powershell 'npm install'
+                powershell 'npm run build'
             }
         }
         stage('Test') { 
             steps {
-                sh 'npm install' 
-                sh 'npm run dev'
+                powershell 'npm install' 
+                powershell 'npm run dev'
             }
         }
         stage('Deploy') { 
             steps {
-                sh 'npm install' 
-                sh 'docker build . -f dockerfile.txt'
-                sh 'docker push phunguyen1211/test:v2'
+                powershell 'npm install' 
+                powershell 'docker build . -f dockerfile.txt'
+                powershell 'docker push phunguyen1211/test:v2'
             }
         }
     }

@@ -1,5 +1,5 @@
 pipeline {
-    agent {docker { image 'nextjs' }}
+    agent any
     stages {
         stage('Build') {
             steps {

@@ -60,7 +60,7 @@ export default function Gacha() {
       }
     }
   }
-  //something
+  //somethings
   // Function to perform multiple gacha rolls
   function multiRoll(times = 11) {
     const results: any = [];

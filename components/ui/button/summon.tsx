@@ -38,7 +38,7 @@ function Summon({ sqAmount, summonCount, backgroundColor, onSummon }: params) {
         size="large"
         onClick={onSummon}
       >
-        {summonCount}x Summon
+        {summonCount}x Summons
       </Button>
       <br />
       <span>
@@ -49,7 +49,7 @@ function Summon({ sqAmount, summonCount, backgroundColor, onSummon }: params) {
             height={50}
             alt="Saint Quartz"
           />
-          {sqAmount} Saint Quartzs
+          {sqAmount} Saint Quartz
         </Typography>
       </span>
     </Box>

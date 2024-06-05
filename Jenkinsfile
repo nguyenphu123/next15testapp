@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+        registry = "phunguyen1211/test"
+        registryCredential = 'docker-hub-credentials'
+        dockerImage = ''
+    }
     agent any
     stages {
         // stage('Clone repository') {
@@ -9,7 +14,7 @@ pipeline {
         stage('Build image') {
             steps{
                 script{
-                     app = docker.build("dockerfile")
+                     dockerImage = docker.build(registry+":v3")
                 }
             }
         /* This builds the actual image; synonymous to
@@ -26,9 +31,8 @@ pipeline {
         stage('Push image') { 
              steps{
                 script{
-                    docker.withRegistry('docker pull registry.hub.docker.com/phunguyen1211/test', 'docker-hub-credentials') {
-                    app.push("new")
-                    app.push("latest")
+                    docker.withRegistry('', registryCredential) {
+                    dockerImage.push()
                     }
                 }
             }               

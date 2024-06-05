@@ -49,7 +49,7 @@ function Summon({ sqAmount, summonCount, backgroundColor, onSummon }: params) {
             height={50}
             alt="Saint Quartz"
           />
-          {sqAmount} Saint Quartzs
+          {sqAmount} Saint Quartz
         </Typography>
       </span>
     </Box>

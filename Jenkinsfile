@@ -6,11 +6,7 @@ pipeline {
     }
     agent any
     stages {
-        // stage('Clone repository') {
-        // /* Let's make sure we have the repository cloned to our workspace */
-
-        //     checkout scm
-        // }
+        
         stage('Build image') {
             steps{
                 script{
@@ -22,12 +18,15 @@ pipeline {
 
            
         }
-        // stage('Build') {
-        //     steps {
-        //         powershell 'npm install'
-        //         powershell 'npm run build'
-        //     }
-        // }
+        post {          
+            success {  
+                mail bcc: '', body: "<b>Example</b><br>Project: Gacha <br>Build Number: v3", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Success build project gacha v3", to: "phu.nguyen@lp.com.vn";
+            }  
+            failure {  
+                mail bcc: '', body: "<b>Example</b><br>Project: Gacha <br>Build Number: v3 failed", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Failed to build project gacha v3", to: "phu.nguyen@lp.com.vn";
+            }           
+        }  
+        
         stage('Push image') { 
              steps{
                 script{
@@ -37,5 +36,13 @@ pipeline {
                 }
             }               
         }
+        post {          
+            success {  
+                mail bcc: '', body: "<b>Example</b><br>Project: Gacha <br>Build Number: v3", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Success push project gacha v3", to: "phu.nguyen@lp.com.vn";
+            }  
+            failure {  
+                mail bcc: '', body: "<b>Example</b><br>Project: Gacha <br>Build Number: v3 Push failed", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Failed to Push project gacha v3", to: "phu.nguyen@lp.com.vn";
+            }           
+        }  
     }
 }

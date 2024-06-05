@@ -12,10 +12,15 @@ pipeline {
         //     checkout scm
         // }
         stage('Build image') {
+            steps{
+                script{
+                     app = docker.build("phunguyen1211/test:v2")
+                }
+            }
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-            app = docker.build("phunguyen1211/test:v2")
+           
         }
         // stage('Build') {
         //     steps {
@@ -24,10 +29,14 @@ pipeline {
         //     }
         // }
         stage('Push image') { 
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                app.push("new")
-                app.push("latest")
-            }
+             steps{
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                    app.push("new")
+                    app.push("latest")
+                    }
+                }
+            }               
         }
     }
 }

@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'dockerfile'
-            registryUrl 'https://hub.docker.com/repository/docker/phunguyen1211/test/tags'
-        }
-    }
+    agent any
     stages {
         // stage('Clone repository') {
         // /* Let's make sure we have the repository cloned to our workspace */

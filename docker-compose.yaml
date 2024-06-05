@@ -1,9 +1,12 @@
 version: "2"
 services:
-  test:
+  jenkins:
     build:
       context: .
-      dockerfile: D:\project\testNext15\next15testapp\dockerfile.txt
+      dockerfile: dockerfile.txt
+    container_name: jenkins
+    privileged: true
+    user: root
     image: phunguyen1211/test:v2
     logging:
       driver: "json-file"
@@ -14,6 +17,14 @@ services:
       # - "80:3000"
       - "3000:3000"
     restart: "always"
+    volumes:
+      - '/app:/app'
+      - '/usr/share/fonts:/usr/share/fonts'
+      - '/docker/jenkins/jenkins_home:/var/jenkins_home'
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '~/.ssh:/var/jenkins_home/.ssh'
+      - '~/.m2:/root/.m2'
     networks:
       - app
 networks:

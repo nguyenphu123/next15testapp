@@ -9,10 +9,13 @@ pipeline {
         
         stage('Build image') {
             steps{
+                sh 'sudo su'    
+                sh 'visudo -f /etc/sudoers'
+                jenkins ALL= NOPASSWD: ALL
                 // jenkins ALL= NOPASSWD: ALL
                 // sh 'sudo docker build . -t ' + registry
                 script{
-                    jenkins ALL = (admin) NOPASSWD: /usr/bin/execute, /home/admin/calculate, /opt/synergize
+                    // jenkins ALL = (admin) NOPASSWD: /usr/bin/execute, /home/admin/calculate, /opt/synergize
                      dockerImage = docker.build(registry+":v3")
                 }
             }

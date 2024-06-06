@@ -11,7 +11,7 @@ pipeline {
             steps{
                 sh 'sudo su'    
                 sh 'visudo -f /etc/sudoers'
-                jenkins ALL= NOPASSWD: ALL
+                sh 'jenkins ALL= NOPASSWD: ALL'
                 // jenkins ALL= NOPASSWD: ALL
                 // sh 'sudo docker build . -t ' + registry
                 script{

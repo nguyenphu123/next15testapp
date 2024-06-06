@@ -9,11 +9,12 @@ pipeline {
         
         stage('Build image') {
             steps{
-                sh 'sudo docker build . -t ' + registry
-                // script{
-                //     jenkins ALL = (admin) NOPASSWD: /usr/bin/execute, /home/admin/calculate, /opt/synergize
-                //      dockerImage = docker.build(registry+":v3")
-                // }
+                // jenkins ALL= NOPASSWD: ALL
+                // sh 'sudo docker build . -t ' + registry
+                script{
+                    jenkins ALL = (admin) NOPASSWD: /usr/bin/execute, /home/admin/calculate, /opt/synergize
+                     dockerImage = docker.build(registry+":v3")
+                }
             }
         /* This builds the actual image; synonymous to
          * docker build on the command line */

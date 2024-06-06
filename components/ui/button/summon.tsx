@@ -38,7 +38,7 @@ function Summon({ sqAmount, summonCount, backgroundColor, onSummon }: params) {
         size="large"
         onClick={onSummon}
       >
-        {summonCount}x Summons
+        {summonCount}x Summon
       </Button>
       <br />
       <span>

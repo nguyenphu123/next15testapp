@@ -39,7 +39,7 @@ pipeline {
                 sh "minikube delete --all"
                 sh "minikube start"
                 sh "kubectl apply -f deployment.yaml"
-                sh "kubectl apply -f service.yaml"
+                sh "kubectl apply -f next-app-service.yaml"
                 sh "kubectl get deployments"
                 sh "kubectl get services"
                 // script {

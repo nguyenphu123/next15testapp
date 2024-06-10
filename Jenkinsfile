@@ -34,6 +34,7 @@ pipeline {
         }
         stage('Deploying container to Kubernetes') {
             steps {
+                sh "minikube delete --all"
                 sh "minikube start"
                 // sh "kubectl apply -f deployment.yaml"
                 // sh "kubectl get deployments"

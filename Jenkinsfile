@@ -5,14 +5,16 @@ pipeline {
         dockerImage = ''
     }
     agent any
+    stage('Checkout Source') {
+      steps {
+        git 'https://github.com/nguyenphu123/next15testapp.git'
+      }
+    }
     stages {
         
         stage('Build image') {
-            steps{
-               
-               
-                script{
-                    
+            steps{               
+                script{                   
                      dockerImage = docker.build(registry+":v3")
                 }
             }
@@ -39,10 +41,10 @@ pipeline {
                 // sh "kubectl apply -f deployment.yaml"
                 // sh "kubectl get deployments"
                 // sh "kubectl get services"
-                // script {
-                // kubernetesDeploy(configs: "deployment.yaml", 
-                //                                 "service.yaml")
-                // }
+                script {
+                    kubernetesDeploy(configs: "deployment.yaml", 
+                                                "service.yaml")
+                }
             }
         } 
     }

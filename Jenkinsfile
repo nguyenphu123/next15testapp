@@ -5,13 +5,13 @@ pipeline {
         dockerImage = ''
     }
     agent any
-    stage('Checkout Source') {
-      steps {
-        git 'https://github.com/nguyenphu123/next15testapp.git'
-      }
-    }
+    
     stages {
-        
+        stage('Checkout Source') {
+            steps {
+                git 'https://github.com/nguyenphu123/next15testapp.git'
+            }
+        }    
         stage('Build image') {
             steps{               
                 script{                   

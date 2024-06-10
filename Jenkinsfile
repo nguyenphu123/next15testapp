@@ -34,6 +34,14 @@ pipeline {
                 }
             }               
         }
+        stage('Check node, pod'){
+            steps{
+                sh "kubectl get nodes"
+                sh "kubectl get pods"
+                sh "kubectl create deployment next-app --image=phunguyen1211/test:v3"
+                sh "kubectl get deployments"
+            }
+        }
         stage('Deploying container to Kubernetes') {
             steps {
                 sh "minikube delete --all"
@@ -42,7 +50,7 @@ pipeline {
                 sh "kubectl apply -f service.yaml"
                 sh "kubectl get deployments"
                 sh "kubectl get services"
-                sh "kubectl get pods"
+                
                 // sh "minikube service next-app-service"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 

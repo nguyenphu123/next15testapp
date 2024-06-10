@@ -42,6 +42,7 @@ pipeline {
                 sh "kubectl apply -f service.yaml"
                 sh "kubectl get deployments"
                 sh "kubectl get services"
+                sh "minikube service next-app-service"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

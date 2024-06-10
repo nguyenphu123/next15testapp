@@ -38,13 +38,13 @@ pipeline {
             steps {
                 sh "minikube delete --all"
                 sh "minikube start"
-                // sh "kubectl apply -f deployment.yaml"
-                // sh "kubectl get deployments"
-                // sh "kubectl get services"
-                script {
-                    kubernetesDeploy(configs: "deployment.yaml", 
-                                                "service.yaml")
-                }
+                sh "kubectl apply -f deployment.yaml"
+                sh "kubectl get deployments"
+                sh "kubectl get services"
+                // script {
+                //     kubernetesDeploy(configs: "deployment.yaml", 
+                //                                 "service.yaml")
+                // }
             }
         } 
     }

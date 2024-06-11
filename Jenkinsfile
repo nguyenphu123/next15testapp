@@ -7,12 +7,12 @@ pipeline {
     agent any
     
     stages {
-        stage('reset minukube'){
-            steps{
-                sh "minikube delete --all"
-                sh "minikube start"
-            }
-        }
+        // stage('reset minukube'){
+        //     steps{
+        //         sh "minikube delete --all"
+        //         sh "minikube start"
+        //     }
+        // }
         stage('Checkout Source') {
             steps {
                 git 'https://github.com/nguyenphu123/next15testapp.git'
@@ -43,18 +43,15 @@ pipeline {
        
         stage('Check node, pod'){
             steps{
-                sh "kubectl get nodes"
-                sh "kubectl get pods"
+                sh "microk8s kubectl get all --all-namespaces"
             }
         }
         stage('Deploying container to Kubernetes') {
             steps {
-                sh "kubectl apply -f deployment.yaml"
-                sh "kubectl apply -f service.yaml"
-                sh "kubectl create deployment next-app --image=phunguyen1211/test:v3"
-                sh "kubectl get deployments"
-                sh "kubectl get services"
-                sh "minikube service next-app-service"
+                sh "microk8s kubectl create deployment next --image="+dockerImage
+                sh "microk8s kubectl scale deployment next --replicas=2"
+                sh "microk8s kubectl expose deployment next --type=NodePort --port=80 --name=next-service"
+                sh "microk8s kubectl get all --all-namespaces"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

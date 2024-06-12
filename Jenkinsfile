@@ -56,7 +56,7 @@ pipeline {
                 sh "sudo microk8s kubectl get all --all-namespaces"
                 sh "sudo iptables -L"
                 sh "sudo iptables -A INPUT -p tcp --dport 32264 -j ACCEPT"
-                sh "ngrok http http://localhost:32264"
+                sh "ngrok http 32264"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

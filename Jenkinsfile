@@ -43,15 +43,15 @@ pipeline {
        
         stage('Check node, pod'){
             steps{
-                sh "microk8s kubectl get all --all-namespaces"
+                sh "sudo microk8s kubectl get all --all-namespaces"
             }
         }
         stage('Deploying container to Kubernetes') {
             steps {
-                sh "microk8s kubectl create deployment next --image="+dockerImage
-                sh "microk8s kubectl scale deployment next --replicas=2"
-                sh "microk8s kubectl expose deployment next --type=NodePort --port=80 --name=next-service"
-                sh "microk8s kubectl get all --all-namespaces"
+                sh "sudo microk8s kubectl create deployment next --image="+dockerImage
+                sh "sudo microk8s kubectl scale deployment next --replicas=2"
+                sh "sudo microk8s kubectl expose deployment next --type=NodePort --port=80 --name=next-service"
+                sh "sudo microk8s kubectl get all --all-namespaces"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

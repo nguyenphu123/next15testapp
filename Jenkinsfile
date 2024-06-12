@@ -55,7 +55,7 @@ pipeline {
                 sh "sudo microk8s kubectl expose deployment next --type=NodePort --port=80 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"
                 sh "sudo lt --port 80"
-               
+                sh "sudo curl https://loca.lt/mytunnelpassword"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

@@ -56,6 +56,7 @@ pipeline {
                 sh "sudo microk8s kubectl get all --all-namespaces"
                 sh "sudo ufw allow 32264"
                 sh "sudo ufw status"
+                sh "sudo ufw enable"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

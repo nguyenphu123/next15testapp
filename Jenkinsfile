@@ -54,7 +54,7 @@ pipeline {
                 sh "sudo microk8s kubectl scale deployment next --replicas=2"
                 sh "sudo microk8s kubectl expose deployment next --type=NodePort --port=80 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"
-                sh "sudo microk8s kubectl port-forward service/next-service 80:* --address=0.0.0.0"
+                sh "sudo lt --port 80"
                
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 

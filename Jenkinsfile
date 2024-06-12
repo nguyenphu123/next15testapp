@@ -54,9 +54,9 @@ pipeline {
                 sh "sudo microk8s kubectl scale deployment next --replicas=2"
                 sh "sudo microk8s kubectl expose deployment next --type=NodePort --port=32264 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"
-                sh "sudo ufw allow 32264"
-                sh "sudo ufw status"
-                sh "sudo ufw enable"
+                sh "sudo iptables -L"
+                sh "sudo iptables -A INPUT -p tcp --dport 32264 -j ACCEPT"
+                sh "ngrok http http://localhost:32264"
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

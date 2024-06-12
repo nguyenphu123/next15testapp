@@ -52,11 +52,10 @@ pipeline {
                 sh "sudo microk8s kubectl delete svc next-service"
                 sh "sudo microk8s kubectl create deployment next --image="+registry+":v3"
                 sh "sudo microk8s kubectl scale deployment next --replicas=2"
-                sh "sudo microk8s kubectl expose deployment next --type=NodePort --port=32264 --name=next-service"
+                sh "sudo microk8s kubectl expose deployment next --type=NodePort --port=80 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"
-                sh "sudo iptables -L"
-                sh "sudo iptables -A INPUT -p tcp --dport 32264 -j ACCEPT"
-                sh "ngrok http 32264"
+                sh "sudo microk8s kubectl port-forward service/next-service 80:* --address=0.0.0.0"
+               
                 // script {
                 //     kubernetesDeploy(configs: "deployment.yaml", 
                 //                                 "service.yaml")

@@ -10,5 +10,5 @@ RUN npm install next
 RUN npm list --depth=0
 RUN npm run build
 EXPOSE 3000
-COPY --from=builder /next .
+
 CMD ["npm", "start"]

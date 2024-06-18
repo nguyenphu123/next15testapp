@@ -15,7 +15,8 @@
     "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@types/node": "^20",

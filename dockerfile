@@ -1,14 +1,18 @@
-FROM node:latest
-MAINTAINER phu
-WORKDIR /app
-COPY package*.json .
-# RUN npm config set registry http://registry.npmjs.org/
-# RUN npm config set https-proxy http://registry.npmjs.org/
-RUN npm install npm@latest
-RUN npm install
-RUN npm install next
-RUN npm list --depth=0
-RUN npm run build
-EXPOSE 3000
+FROM node:18-alpine as builder
+WORKDIR /my-space
 
-CMD ["npm", "start"]
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:18-alpine as runner
+WORKDIR /my-space
+COPY --from=builder /my-space/package.json .
+COPY --from=builder /my-space/package-lock.json .
+COPY --from=builder /my-space/next.config.js ./
+COPY --from=builder /my-space/public ./public
+COPY --from=builder /my-space/.next/standalone ./
+COPY --from=builder /my-space/.next/static ./.next/static
+EXPOSE 3000
+ENTRYPOINT ["npm", "start"]

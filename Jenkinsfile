@@ -57,7 +57,7 @@ pipeline {
         }
         stage('Deploying container to Kubernetes') {
             steps {
-                sh "sudo microk8s kubectl delete deployment next"
+                // sh "sudo microk8s kubectl delete deployment next"
                 // sh "sudo microk8s kubectl delete svc next-service"
                 sh "sudo microk8s kubectl create deployment next --image="+registry+":v3"
                 sh "sudo microk8s kubectl scale deployment next --replicas=2"

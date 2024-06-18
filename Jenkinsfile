@@ -17,7 +17,12 @@ pipeline {
             steps {
                 git 'https://github.com/nguyenphu123/next15testapp.git'
             }
-        }    
+        }
+        stage('Disable ufw'){
+            steps{
+                sh 'sudo ufw disable'
+            }
+        }
         stage('Build image') {
             steps{               
                 script{                   
@@ -29,7 +34,11 @@ pipeline {
 
            
         }
-       
+        stage('Enable ufw'){
+            steps{
+                sh 'sudo ufw enable'
+            }
+        }
         
         stage('Push image') { 
              steps{

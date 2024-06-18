@@ -61,7 +61,7 @@ pipeline {
                 sh "sudo microk8s kubectl delete svc next-service"
                 sh "sudo microk8s kubectl create deployment next --image="+registry+":v3"
                 sh "sudo microk8s kubectl scale deployment next --replicas=2"
-                sh "sudo microk8s kubectl expose deployment next --type=LoadBalancer --port 8081 --target-port 8081 --name=next-service"
+                sh "sudo microk8s kubectl expose deployment next --type=LoadBalancer --port 8081:7070 --target-port 8081:7070 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"
                 // sh "sudo microk8s kubectl port-forward svc/next-service 80"
                 sh "sudo microk8s kubectl get pods"

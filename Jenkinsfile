@@ -65,6 +65,7 @@ pipeline {
                 sh "sudo microk8s kubectl get all --all-namespaces"
                 // sh "sudo microk8s kubectl port-forward svc/next-service 80"
                 sh "sudo microk8s kubectl get pods"
+                sh 'kubectl port-forward -n kube-system service/kubernetes-dashboard 8082:8081 --address 0.0.0.0'
                 // sh "sudo curl https://loca.lt/mytunnelpassword"
                 // sh "sudo lt --port 8008"
                

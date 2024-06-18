@@ -9,5 +9,6 @@ RUN npm i  -g npm@latest
 RUN npm  -g install
 RUN npm i -g next
 RUN npm list  -g --depth=0
+RUN npm run build
 EXPOSE 3000
 CMD ["npm", "start"]

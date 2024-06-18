@@ -1,14 +1,14 @@
 FROM node:latest
 MAINTAINER phu
-ADD . /var/www
-WORKDIR /var/www
-
+WORKDIR /app
+COPY package*.json .
 # RUN npm config set registry http://registry.npmjs.org/
 # RUN npm config set https-proxy http://registry.npmjs.org/
-RUN npm i  -g npm@latest
-RUN npm  -g install
-RUN npm i -g next
-RUN npm list  -g --depth=0
+RUN npm install npm@latest
+RUN npm install
+RUN npm install next
+RUN npm list --depth=0
 RUN npm run build
 EXPOSE 3000
+COPY --from=builder /next .
 CMD ["npm", "start"]

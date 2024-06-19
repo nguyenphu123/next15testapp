@@ -14,9 +14,10 @@ const probabilities: any = {
 export default function Gacha() {
   const [gachaPool, setGachaPool]: any = useState([]);
   const [gachaResult, setGachaResult]: any = useState([]);
-  console.log(gachaPool)
+  // console.log(gachaPool)
   useEffect(() => {
     async function getData() {
+      console.log("working")
       await fetch("https://api.atlasacademy.io/export/NA/nice_servant.json")
         .then((response) => response.json())
         .then((data) => {

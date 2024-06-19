@@ -17,7 +17,7 @@ export default function Gacha() {
   // console.log(gachaPool)
   useEffect(() => {
     async function getData() {
-      console.log("working")
+     
       await fetch("https://api.atlasacademy.io/export/NA/nice_servant.json")
         .then((response) => response.json())
         .then((data) => {

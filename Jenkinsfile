@@ -3,6 +3,8 @@ pipeline {
         registry = "phunguyen1211/test"
         registryCredential = 'docker-hub-credentials'
         dockerImage = ''
+        max = 500
+        random_num = "${Math.abs(new Random().nextInt(max+1))}"
     }
     agent any
     
@@ -26,7 +28,7 @@ pipeline {
         stage('Build image') {
             steps{               
                 script{                   
-                     dockerImage = docker.build(registry+":v3")
+                     dockerImage = docker.build(registry+":"+random_num)
                 }
             }
         /* This builds the actual image; synonymous to
@@ -59,7 +61,7 @@ pipeline {
             steps {
                 // sh "sudo microk8s kubectl delete deployment next"
                 // sh "sudo microk8s kubectl delete svc next-service"
-                sh "sudo microk8s kubectl set image deployment/next test="+registry+":v3"
+                sh "sudo microk8s kubectl set image deployment/next test="+registry+":"+random_num
                 // sh "sudo microk8s kubectl scale deployment next --replicas=2"
                 // sh "sudo microk8s kubectl expose deployment next --type=NodePort --port 3000 --target-port 3000 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"

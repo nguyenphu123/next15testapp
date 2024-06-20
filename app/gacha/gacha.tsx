@@ -2,7 +2,7 @@
 
 import Summon from "@/components/ui/button/summon";
 import { useEffect, useState } from "react";
-import { ProgressLoader } from "nextjs-progressloader";
+// import { ProgressLoader } from "nextjs-progressloader";
 // Set the probabilities for each rarity level
 const probabilities: any = {
   "5": 0.01,
@@ -101,7 +101,8 @@ export default function Gacha() {
   }
 
   return isLoading ? (
-    <ProgressLoader />
+    // <ProgressLoader />
+    <></>
   ) : (
     <div>
       <div className="grid grid-cols-6 gap-3">

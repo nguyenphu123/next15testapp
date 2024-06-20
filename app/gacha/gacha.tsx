@@ -15,14 +15,13 @@ export default function Gacha() {
   const [gachaPool, setGachaPool]: any = useState([]);
   const [isLoading, setIsLoading]: any = useState(true);
   const [gachaResult, setGachaResult]: any = useState([]);
-  // console.log(gachaPool)
+  
   useEffect(() => {
     async function getData() {
       await fetch("https://api.atlasacademy.io/export/NA/nice_servant.json")
         .then((response) => response.json())
         .then((data) => {
           for (let i = 0; i < data.length; i++) {
-            console.log(data[i]);
             let newItem = {
               name: data[i].name,
               rarity: data[i].rarity,

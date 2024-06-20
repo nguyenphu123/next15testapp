@@ -14,8 +14,10 @@
     "@mui/material": "^5.15.19",
     "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "next": "14.2.3",
+    "nextjs-progressloader": "^1.2.0",
     "react": "^18",
     "react-dom": "^18",
+    "sass": "^1.77.6",
     "sharp": "^0.33.4"
   },
   "devDependencies": {

@@ -72,7 +72,7 @@ export default function Gacha() {
 
     for (let i = 0; i < times; i++) {
       const result: any = gachaRoll();
-      //   console.log(result);
+      
       results.push(result);
 
       if (result.rarity === "4" || result.rarity === "5") {

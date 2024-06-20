@@ -1,8 +1,9 @@
 "use client";
 
 import Summon from "@/components/ui/button/summon";
+import ThreeDotsWave from "@/components/ui/loading/loading";
 import { useEffect, useState } from "react";
-// import { ProgressLoader } from "nextjs-progressloader";
+import { motion } from "framer-motion";
 // Set the probabilities for each rarity level
 const probabilities: any = {
   "5": 0.01,
@@ -15,7 +16,7 @@ export default function Gacha() {
   const [gachaPool, setGachaPool]: any = useState([]);
   const [isLoading, setIsLoading]: any = useState(true);
   const [gachaResult, setGachaResult]: any = useState([]);
-  
+
   useEffect(() => {
     async function getData() {
       await fetch("https://api.atlasacademy.io/export/NA/nice_servant.json")
@@ -72,7 +73,7 @@ export default function Gacha() {
 
     for (let i = 0; i < times; i++) {
       const result: any = gachaRoll();
-      
+
       results.push(result);
 
       if (result.rarity === "4" || result.rarity === "5") {
@@ -100,14 +101,20 @@ export default function Gacha() {
   }
 
   return isLoading ? (
-    // <ProgressLoader />
-    <></>
+    <ThreeDotsWave />
   ) : (
     <div>
       <div className="grid grid-cols-6 gap-3">
         {gachaResult.map((item: any, index: any) => {
           return (
-            <div className="inline-flex" key={index}>
+            <motion.div
+              layout
+              className="motion-div inline-flex"
+              initial={{ opacity: 0, scale: 0.2 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              key={index}
+            >
               {item.name}
               <br />
               {[...Array(parseInt(item.rarity))].map((key) => {
@@ -133,7 +140,7 @@ export default function Gacha() {
                   </svg>
                 );
               })}
-            </div>
+            </motion.div>
           );
         })}
       </div>

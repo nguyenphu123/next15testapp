@@ -59,7 +59,7 @@ pipeline {
             steps {
                 // sh "sudo microk8s kubectl delete deployment next"
                 // sh "sudo microk8s kubectl delete svc next-service"
-                sh "sudo microk8s kubectl set image deployment/next --image="+registry+":v3"
+                sh "sudo microk8s kubectl set image deployment/next phunguyen1211/test:v3="+registry+":v3"
                 // sh "sudo microk8s kubectl scale deployment next --replicas=2"
                 sh "sudo microk8s kubectl expose deployment next --type=NodePort --port 3000 --target-port 3000 --name=next-service"
                 sh "sudo microk8s kubectl get all --all-namespaces"

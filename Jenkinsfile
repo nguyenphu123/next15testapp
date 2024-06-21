@@ -5,6 +5,7 @@ pipeline {
         dockerImage = ''
         max = 500
         random_num = "${Math.abs(new Random().nextInt(max+1))}"
+        scannerHome = tool '/sonarscanner/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux'
     }
     agent any
     
@@ -22,9 +23,9 @@ pipeline {
         // }
         stage('sonar scanning source code'){
             steps{
-                def scannerHome = tool '/sonarscanner/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux'
+                
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    sh scannerHome+"/bin/sonar-scanner"
                 }
             }
         }

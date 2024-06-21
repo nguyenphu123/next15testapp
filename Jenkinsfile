@@ -25,7 +25,7 @@ pipeline {
             steps{
                 
                 withSonarQubeEnv( installationName: 'test') {
-                    sh "/home/phu/.sonar/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
+                    sh "sudo /home/phu/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux/bin/sonar-scanner \
                     -Dsonar.projectKey=test \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://172.16.1.104:9000 \

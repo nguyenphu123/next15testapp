@@ -24,7 +24,7 @@ pipeline {
         stage('sonar scanning source code'){
             steps{
                 
-                withSonarQubeEnv() {
+                withSonarQubeEnv(installationName: 'test') {
                     sh "sudo /home/phu/.sonar/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
                     -Dsonar.projectKey=test \
                     -Dsonar.sources=. \

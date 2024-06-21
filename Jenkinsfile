@@ -21,19 +21,19 @@ pipeline {
         //         git 'https://github.com/nguyenphu123/next15testapp.git'
         //     }
         // }
-        // stage('sonar scanning source code'){
-        //     steps{
+        stage('sonar scanning source code'){
+            steps{
                 
-        //         withSonarQubeEnv('SonarQube Scanner') {
-        //             sh "sudo /home/phu/.sonar/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
-        //             -Dsonar.projectKey=test \
-        //             -Dsonar.sources=. \
-        //             -Dsonar.host.url=http://172.16.1.148:9000 \
-        //             -Dsonar.token=sqp_6cc2d4230a711c49a395f2089a60ce62cd81733d"
-        //             echo "123456"
-        //         }
-        //     }
-        // }
+                withSonarQubeEnv() {
+                    sh "sudo /home/phu/.sonar/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
+                    -Dsonar.projectKey=test \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://172.16.1.148:9000 \
+                    -Dsonar.token=sqp_6cc2d4230a711c49a395f2089a60ce62cd81733d"
+                    echo "123456"
+                }
+            }
+        }
         stage('Disable ufw'){
             steps{
                 sh 'sudo ufw disable'

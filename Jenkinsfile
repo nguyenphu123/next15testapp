@@ -25,7 +25,11 @@ pipeline {
             steps{
                 
                 withSonarQubeEnv(installationName: 'test') {
-                    sh scannerHome+"/bin/sonar-scanner"
+                    sh scannerHome+"/bin/sonar-scanner \
+                    -Dsonar.projectKey=test \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://172.16.1.148:9000 \
+                    -Dsonar.token=sqp_6cc2d4230a711c49a395f2089a60ce62cd81733d"
                 }
             }
         }

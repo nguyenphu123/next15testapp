@@ -20,6 +20,14 @@ pipeline {
         //         git 'https://github.com/nguyenphu123/next15testapp.git'
         //     }
         // }
+        stage('sonar scanning source code'){
+            steps{
+                def scannerHome = tool '/sonarscanner/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux'
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
         stage('Disable ufw'){
             steps{
                 sh 'sudo ufw disable'

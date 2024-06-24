@@ -44,6 +44,7 @@ pipeline {
                 script{                   
                      dockerImage = docker.build(registry+":"+random_num)
                 }
+                sh "/home/phu/native-sonar-scanner/sonar-scanner-6.0.0.4432-linux/bin/sonar-scanner.sh"
             }
         /* This builds the actual image; synonymous to
          * docker build on the command line */

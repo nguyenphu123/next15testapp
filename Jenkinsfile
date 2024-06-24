@@ -21,16 +21,16 @@ pipeline {
         //         git 'https://github.com/nguyenphu123/next15testapp.git'
         //     }
         // }
-        stage('sonar scanning source code'){
-            steps{
-                sh "sonar-scanner"          
-                sh "sudo rm -rf ./.scannerwork" 
-                // withSonarQubeEnv( installationName: 'test') {
+        // stage('sonar scanning source code'){
+        //     steps{
+        //         sh "sonar-scanner"          
+        //         sh "sudo rm -rf ./.scannerwork" 
+        //         // withSonarQubeEnv( installationName: 'test') {
                              
-                // }
+        //         // }
                  
-            }
-        }
+        //     }
+        // }
         stage('Disable ufw'){
             steps{
                 sh 'sudo ufw disable'

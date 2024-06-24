@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Build image') {
             tools {
-                   jdk "jdk-17.0.11"
+                   jdk "JDK 17"
             }
             steps{               
                 script{                   

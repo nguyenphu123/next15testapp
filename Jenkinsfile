@@ -23,11 +23,11 @@ pipeline {
         // }
         stage('sonar scanning source code'){
             steps{
-                
-                withSonarQubeEnv( installationName: 'test') {
-                    sh "sudo /home/phu/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux/bin/sonar-scanner.sh"          
-                    sh "sudo rm -rf ./.scannerwork"          
-                }
+                sh "sudo /home/phu/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux/bin/sonar-scanner.sh"          
+                sh "sudo rm -rf ./.scannerwork" 
+                // withSonarQubeEnv( installationName: 'test') {
+                             
+                // }
                  
             }
         }

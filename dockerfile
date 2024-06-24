@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN sonar-scanner
+RUN sudo /home/phu/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux/bin/sonar-scanner
 RUN sudo rm -rf ./.scannerwork
 RUN npm run build
 

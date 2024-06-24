@@ -25,7 +25,7 @@ pipeline {
             steps{
                 
                 withSonarQubeEnv( installationName: 'test') {
-                    sh "sonar-scanner"          
+                    sh "sudo /home/phu/sonar-scanner-cli-6.0.0.4432-linux/sonar-scanner-6.0.0.4432-linux/bin/sonar-scanner.sh"          
                     sh "sudo rm -rf ./.scannerwork"          
                 }
                  

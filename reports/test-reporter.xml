@@ -1,0 +1,8 @@
+<testExecutions version="1">
+<file path="./app/page.js">
+<testCase name="TEST Integration test suite: Should onboard business and user" duration="2822"/>
+<testCase name="TEST Integration test suite: Session should be in VALIDATION COMPLETE state , Bus and User entities in ACTIVE state" duration="58075"/>
+<testCase name="TEST Integration test suite: should submit USER registration request successfully" duration="5011"/>
+<testCase name="TEST Integration test suite: Users must be in REGISTERED state" duration="33268"/>
+</file>
+</testExecutions>

@@ -4,6 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+RUN sonar-scanner
+RUN sudo rm -rf ./.scannerwork
 RUN npm run build
 
 

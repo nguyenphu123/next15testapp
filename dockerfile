@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm install
 RUN npm install -g sonarqube-scanner
 COPY . .
-RUN npx sonarqube-scanner
+# RUN npx sonarqube-scanner
 # RUN  rm -rf ./.scannerwork
 RUN npm run build
 

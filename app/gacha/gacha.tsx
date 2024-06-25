@@ -22,10 +22,10 @@ export default function Gacha() {
       await fetch("https://api.atlasacademy.io/export/NA/nice_servant.json")
         .then((response) => response.json())
         .then((data) => {
-          for (let i = 0; i < data.length; i++) {
+          for (const element of data) {
             let newItem = {
-              name: data[i].name,
-              rarity: data[i].rarity,
+              name: element.name,
+              rarity: element.rarity,
             };
             setGachaPool((prevState: any) => [...prevState, newItem]);
           }
@@ -33,10 +33,10 @@ export default function Gacha() {
       await fetch("https://api.atlasacademy.io/export/NA/nice_equip.json")
         .then((response) => response.json())
         .then((data) => {
-          for (let i = 0; i < data.length; i++) {
+          for (const element of data) {
             let newItem = {
-              name: data[i].name,
-              rarity: data[i].rarity,
+              name: element.name,
+              rarity: element.rarity,
             };
             setGachaPool((prevState: any) => [...prevState, newItem]);
           }
@@ -105,7 +105,7 @@ export default function Gacha() {
   ) : (
     <div>
       <div className="grid grid-cols-6 gap-3">
-        {gachaResult.map((item: any, index: any) => {
+        {gachaResult.map((item: any, index: number) => {
           return (
             <motion.div
               layout
@@ -113,7 +113,7 @@ export default function Gacha() {
               initial={{ opacity: 0, scale: 0.2 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              key={index}
+              key={item.name}
             >
               {item.name}
               <br />

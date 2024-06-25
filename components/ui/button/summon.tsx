@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Box, Button, Typography } from "@mui/material";
 import { flexColStyle } from "@/components/utils/styles";
 
-interface params {
+interface Params {
   sqAmount: string;
   summonCount: string;
   backgroundColor: string;
@@ -29,7 +29,7 @@ const summonButtonStyle = {
   textTransform: "none",
 };
 
-function Summon({ sqAmount, summonCount, backgroundColor, onSummon }: params) {
+function Summon({ sqAmount, summonCount, backgroundColor, onSummon }: Readonly<Params>) {
   return (
     <Box sx={boxStyle}>
       <Button

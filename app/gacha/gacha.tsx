@@ -71,33 +71,35 @@ export default function Gacha() {
   function multiRoll(times = 11) {
     const results: any = [];
     let guaranteed4StarOrAbove = false;
+    while (results.length != 11) {
+      for (let i = 0; i < times; i++) {
+        const result: any = gachaRoll();
 
-    for (let i = 0; i < times; i++) {
-      const result: any = gachaRoll();
+        results.push(result);
 
-      results.push(result);
+        if (result.rarity === "4" || result.rarity === "5") {
+          guaranteed4StarOrAbove = true;
+        }
 
-      if (result.rarity === "4" || result.rarity === "5") {
-        guaranteed4StarOrAbove = true;
-      }
-
-      if (i === times - 1 && !guaranteed4StarOrAbove) {
-        const forced4Star = {
-          rarity: "4",
-          name: gachaPool.filter(
-            (item: { rarity: string }) => item.rarity == "4"
-          )[
-            Math.floor(
-              Math.random() *
-                gachaPool.filter(
-                  (item: { rarity: string }) => item.rarity == "4"
-                ).length
-            )
-          ].name,
-        };
-        results[results.length - 1] = forced4Star;
+        if (i === times - 1 && !guaranteed4StarOrAbove) {
+          const forced4Star = {
+            rarity: "4",
+            name: gachaPool.filter(
+              (item: { rarity: string }) => item.rarity == "4"
+            )[
+              Math.floor(
+                Math.random() *
+                  gachaPool.filter(
+                    (item: { rarity: string }) => item.rarity == "4"
+                  ).length
+              )
+            ].name,
+          };
+          results[results.length - 1] = forced4Star;
+        }
       }
     }
+
     setGachaResult([...results]);
   }
 

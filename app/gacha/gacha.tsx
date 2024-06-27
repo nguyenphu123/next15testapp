@@ -49,6 +49,7 @@ export default function Gacha() {
 
   // Function to perform a single gacha roll
   function gachaRoll() {
+    setGachaResult([]);
     const roll = Math.random();
     let accumulatedProbability = 0;
 

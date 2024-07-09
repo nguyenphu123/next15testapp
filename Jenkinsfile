@@ -59,10 +59,10 @@ pipeline {
         }
         stage('Scan Image') {
             steps {
-                
-                withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
-                    crowdStrikeSecurity imageName: 'test' , imageTag: random_num, enforce: true, timeout: 60
-                }
+                crowdStrikeSecurity imageName: 'test' , imageTag: random_num, enforce: true, timeout: 60
+                // withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
+                    
+                // }
             }
         }
         stage('Push image') { 

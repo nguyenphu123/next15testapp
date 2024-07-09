@@ -69,10 +69,10 @@ pipeline {
         }
         stage('Stage 1') {
             steps {
-                crowdStrikeSecurity imageName: registry+":"+random_num , imageTag: 'test', enforce: true, timeout: 60
-                // withCredentials([usernameColonPassword(credentialsId: 'Falcon_Token', variable: '')]) {
-                    
-                // }
+                
+                withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
+                    crowdStrikeSecurity imageName: registry+":"+random_num , imageTag: 'test', enforce: true, timeout: 60
+                }
             }
         }
         stage('Check node, pod'){

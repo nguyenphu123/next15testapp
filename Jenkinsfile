@@ -33,7 +33,7 @@ pipeline {
         // }
         stage('Disable ufw'){
             steps{
-                cleanWs()
+                // cleanWs()
                 sh 'sudo ufw disable'
             }
         }

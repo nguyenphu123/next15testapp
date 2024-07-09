@@ -59,21 +59,21 @@ pipeline {
         }
         stage('Scan Image') {
             steps {
-                crowdStrikeSecurity imageName: 'test' , imageTag: random_num, enforce: true, timeout: 60
+                crowdStrikeSecurity imageName: registry , imageTag: random_num, enforce: true, timeout: 60
                 // withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
                     
                 // }
             }
         }
-        stage('Push image') { 
-             steps{
-                script{
-                    docker.withRegistry('', registryCredential) {
-                    dockerImage.push()
-                    }
-                }
-            }               
-        }
+        // stage('Push image') { 
+        //      steps{
+        //         script{
+        //             docker.withRegistry('', registryCredential) {
+        //             dockerImage.push()
+        //             }
+        //         }
+        //     }               
+        // }
        
         stage('Check node, pod'){
             steps{

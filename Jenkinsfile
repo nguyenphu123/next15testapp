@@ -60,7 +60,7 @@ pipeline {
         }
         stage('Scan Image') {
             steps {
-                crowdStrikeSecurity imageName: registry , imageTag: random_num, enforce: true, timeout: 60
+                crowdStrikeSecurity imageName: registry , imageTag: random_num, enforce: true, timeout: 600
                 // withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
                     
                 // }

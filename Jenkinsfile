@@ -57,7 +57,14 @@ pipeline {
                 sh 'sudo ufw enable'
             }
         }
-        
+        stage('Scan Image') {
+            steps {
+                
+                withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
+                    crowdStrikeSecurity imageName: 'test' , imageTag: random_num, enforce: true, timeout: 60
+                }
+            }
+        }
         stage('Push image') { 
              steps{
                 script{
@@ -67,14 +74,7 @@ pipeline {
                 }
             }               
         }
-        stage('Stage 1') {
-            steps {
-                
-                withCredentials([usernameColonPassword(credentialsId: 'CrowdStrikeFalcon', variable: '')]) {
-                    crowdStrikeSecurity imageName: registry+":"+random_num , imageTag: 'test', enforce: true, timeout: 60
-                }
-            }
-        }
+       
         stage('Check node, pod'){
             steps{
                 sh "sudo microk8s kubectl get all --all-namespaces"

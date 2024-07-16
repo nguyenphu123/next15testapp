@@ -38,9 +38,9 @@ pipeline {
             }
         }
         stage('Build image') {
-            tools {
-                   jdk "JDK 17"
-            }
+            // tools {
+            //        jdk "JDK 17"
+            // }
             steps{               
                 script{                   
                      dockerImage = docker.build(registry+":"+random_num)

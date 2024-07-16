@@ -16,11 +16,11 @@ pipeline {
         //         sh "minikube start"
         //     }
         // }
-        // stage('Checkout Source') {
-        //     steps {
-        //         git 'https://github.com/nguyenphu123/next15testapp.git'
-        //     }
-        // }
+        stage('Checkout Source') {
+            steps {
+                git 'https://github.com/nguyenphu123/next15testapp.git'
+            }
+        }
         // stage('sonar scanning source code'){
         //     steps{
         //         sh "sonar-scanner"          
